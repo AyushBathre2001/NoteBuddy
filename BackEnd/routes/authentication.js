@@ -13,7 +13,7 @@ router.post('/createuser',
     body('email').isEmail(),
     body('password').isLength({ min: 6 }),
     async (req, res) => {
-
+        let success = false
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
             return res.status(400).json({ errors: errors.array() });
@@ -37,7 +37,15 @@ router.post('/createuser',
                 })
 
             }
-            res.json(user)
+            let data = {
+                user:{
+                    id:user.id
+                }
+            }
+            var token = jwt.sign(data, jwt_secret);
+            success = true
+
+            res.json({"success":success,"token":token})
 
         } catch (err) {
             console.error(err)
@@ -49,6 +57,7 @@ router.post('/login',
     body('email').isEmail(),
     body('password').exists(),
      async (req, res) => {
+        let success = false
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
             return res.status(400).json({ errors: errors.array() });
@@ -58,11 +67,11 @@ router.post('/login',
         try {
             let user = await User.findOne({email})
             if(!user){
-               return res.status(400).send("Please try to enter correct login credentials")
+               return res.status(400).json({"success":success})
             }
             let passcompare = await bcrypt.compare(password,user.password)
             if(!passcompare){
-                return res.status(400).send("Please try to enter correct login credentials")
+                return res.status(400).json({"success":success})
             }
 
             let data = {
@@ -71,8 +80,9 @@ router.post('/login',
                 }
             }
             var token = jwt.sign(data, jwt_secret);
+            success = true
 
-            res.send(token)
+            res.json({"success":success,"token":token})
             
         } catch (error) {
             res.status(500).send("Internal server error")

@@ -1,38 +1,236 @@
-.App {
-  text-align: center;
+.homepage {
+    width: 100%;
+    height: 90vh;
+    /* background-color: black; */
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.homepage::after{
+    content: "";
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url(../src/Images/bg.jpg);
+    background-size: cover;
+    background-position: center;
+    position: absolute;
+    z-index: -1;
+    filter: blur(20px);
+    
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+
+.left {
+    width: 90%;
+    height: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    clip-path: polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%);
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.left img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
 }
 
-.App-link {
-  color: #61dafb;
+.text {
+    position: absolute;
+ 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: 'gilroy';
+    z-index: 33;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.text h1 {
+    font-size: 5vw;
+    font-weight: 600;
+    color: rgb(44, 43, 43);
+}
+.text h4{
+    color: rgb(71, 71, 71);
+}
+
+.text img {
+    width: 70px;
+    position: relative;
+}
+
+.footer {
+    width: 100%;
+    height: 20vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    background-color: rgb(28, 28, 28);
+    position: relative;
+    bottom: 0;
+}
+
+.footer p {
+    font-family: 'gilroy';
+    margin: 10px;
+    color: gray;
+}
+
+.social i {
+    font-size: 21px;
+    color: white;
+    margin: 0px 15px;
+}
+.container{
+    width: 100%;
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* clip-path: polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%); */
+
+}
+
+.login{
+    height: 500px;
+    width: 350px;
+/* border: 1px solid rgb(184, 184, 184); */
+border-radius: 12px;
+box-shadow: 0px 0px 5px rgb(180, 180, 180);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+}
+
+.user_icon{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.user_icon i{
+    font-size: 25px;
+    color: white;
+}
+
+.login form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.login form input{
+    width: 300px;
+}
+
+
+.insert_container{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.overlay{
+    width: 85%;
+    border-radius: 12px;
+    box-shadow: 0px 0px 5px rgb(183, 183, 183);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+}
+
+.format{
+    display: flex;
+}
+
+.dcircle{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.dcircle i{
+    color: white;
+}
+
+.overlay>form{
+    width: 60%;
+}
+
+.overlay h4{
+    font-size: 40px;
+    font-family: 'gilroy';
+    color: rgb(70, 70, 70);
+    font-weight: 600;
+}
+
+body{
+    background-color: rgb(235, 235, 235);
+}
+
+.register{
+    width: 70%;
+    border-radius: 12px;
+    box-shadow: 0px 0px 5px gray;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+}
+
+.register form{
+    width: 90%;
+}
+
+
+
+
+@media  screen and (max-width:1000px){
+    .Navbar .btn-light{
+        display: none;
+    }
+    .Navbar .btn-success{
+        display: none;
+    }
+  
+}
+
+@media screen and (max-width:860px){
+    .text h1{
+        font-size: 11vw;
+    }
+
+    .register{
+        width: 85%;
+    }
+  
 }
